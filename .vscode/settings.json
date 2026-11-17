@@ -1,0 +1,14 @@
+{
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.import.gradle.enabled": true,
+    "java.import.maven.enabled": false,
+    "java.project.sourcePaths": [
+        "src/main/java",
+        "src/test/java"
+    ],
+    "java.project.referencedLibraries": [
+        "lib/*.jar"
+    ],
+    "java.compile.nullAnalysis.mode": "disabled"
+}
+

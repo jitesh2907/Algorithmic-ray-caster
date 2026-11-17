@@ -1,0 +1,19 @@
+# Build output and compiler caches
+.gradle/
+build/
+bin/
+out/
+target/
+*.class
+
+# Portable Git binaries
+.git-bin/
+
+# Temporary and log files
+*.log
+*.tmp
+*.bak
+TestCam.*
+
+# Old legacy artifact jar if not needed
+raycaster.jar

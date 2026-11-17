@@ -1,0 +1,58 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'com.mazeexplorer'
+version = '1.0.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+repositories {
+    mavenCentral()
+    flatDir {
+        dirs 'lib'
+    }
+}
+
+ext {
+    jmeVersion = '3.9.0-stable'
+}
+
+dependencies {
+    // jMonkeyEngine 3.9.0-stable Core & Engine Systems
+    implementation "org.jmonkeyengine:jme3-core:${jmeVersion}"
+    implementation "org.jmonkeyengine:jme3-desktop:${jmeVersion}"
+    implementation "org.jmonkeyengine:jme3-lwjgl3:${jmeVersion}"
+    implementation "org.jmonkeyengine:jme3-plugins:${jmeVersion}"
+
+    // Local library fallback
+    implementation fileTree(dir: 'lib', include: ['*.jar'])
+
+    // Testing
+    testImplementation platform('org.junit:junit-bom:5.10.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.withType(AbstractArchiveTask).configureEach {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+application {
+    mainClass = 'com.mazeexplorer.MazeExplorerApp'
+}
+
+run {
+    standardInput = System.in
+    jvmArgs = [
+        "-Dfile.encoding=UTF-8"
+    ]
+}
+
+test {
+    useJUnitPlatform()
+}
